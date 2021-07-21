@@ -13,10 +13,14 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('vscode-extension-playground.helloWorld', () => {
+	let disposable = vscode.commands.registerCommand('vscode-extension-playground.helloWorld', async () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from vscode-extension-playground!');
+		vscode.window.setStatusBarMessage('Let\'s make an action move!');
+		vscode.window.showWarningMessage('Don\'t move, I will shot!');
+		vscode.window.showErrorMessage('Guns are fired.');
+
+		vscode.workspace.getConfiguration().update("workbench.colorTheme", 'Abyss');
 	});
 
 	context.subscriptions.push(disposable);
